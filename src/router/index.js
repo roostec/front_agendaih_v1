@@ -1,25 +1,54 @@
-import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import { createRouter, createWebHistory } from "vue-router";
 
 const routes = [
   {
-    path: '/',
-    name: 'home',
-    component: HomeView
+    path: "",
+    component: () =>
+      import(/* webpackChunkName: "auth" */ "@/layouts/AuthLayout.vue"),
+    children: [
+      { path: "", redirect: "signin" },
+      {
+        path: "404",
+        name: "404",
+        component: () =>
+          import(/* webpackChunkName: "auth" */ "@/pages/404Page.vue"),
+      },
+      {
+        path: "signin",
+        name: "signin",
+        component: () =>
+          import(/* webpackChunkName: "auth" */ "@/pages/SignInPage.vue"),
+      },
+      {
+        path: "signup",
+        name: "signup",
+        component: () =>
+          import(/* webpackChunkName: "auth" */ "@/pages/SignUpPage.vue"),
+      },
+    ],
   },
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
-]
+    path: "",
+    component: () =>
+      import(/* webpackChunkName: "main" */ "@/layouts/MainLayout.vue"),
+    children: [
+      {
+        path: "main",
+        name: "main",
+        component: () =>
+          import(/* webpackChunkName: "main" */ "@/pages/MainPage.vue"),
+      },
+    ],
+  },
+  {
+    path: "/:catchAll(.*)",
+    redirect: "404",
+  },
+];
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
-  routes
-})
+  routes,
+});
 
-export default router
+export default router;

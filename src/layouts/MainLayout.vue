@@ -11,6 +11,18 @@
           icon="menu"
         />
         <q-toolbar-title> App </q-toolbar-title>
+        <q-btn icon="person" flat round>
+          <q-menu>
+            <q-list style="min-width: 100px">
+              <q-item clickable v-close-popup to="signin">
+                <q-item-section side
+                  ><q-icon name="mdi-exit-to-app" color="negative"
+                /></q-item-section>
+                <q-item-section>Logout</q-item-section>
+              </q-item>
+            </q-list>
+          </q-menu>
+        </q-btn>
       </q-toolbar>
     </q-header>
 

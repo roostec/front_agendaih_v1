@@ -1,6 +1,6 @@
 <template>
   <q-page class="flex flex-center bg-grey-1">
-    <q-form @submit="onLogin">
+    <q-form @submit="onForgotPassword">
       <q-card flat bordered style="width: 448px" class="q-pa-md">
         <q-card-section>
           <div class="text-h5 text-center">Recupera senha</div>
@@ -11,11 +11,26 @@
             v-model="form.email"
             label="Email"
             type="email"
-            :rules="[isRequired, isEmail]"
+            :rules="[isEmail]"
             lazy-rules
           >
             <template v-slot:prepend>
               <q-icon name="mdi-email-outline" class="cursor-pointer" />
+            </template>
+          </q-input>
+          <div class="text-center" style="margin-top: -5px">Ou</div>
+          <q-input
+            outlined
+            v-model="form.cpf"
+            label="CPF"
+            mask="###.###.###-##"
+            lazy-rules
+          >
+            <template v-slot:prepend>
+              <q-icon
+                name="mdi-card-account-details-outline"
+                class="cursor-pointer"
+              />
             </template>
           </q-input>
         </q-card-section>
@@ -25,6 +40,7 @@
             color="primary"
             class="full-width q-py-md q-mb-md"
             no-caps
+            :loading="loadingForgotPassword"
             unelevated
             type="submit"
           />
@@ -53,13 +69,10 @@ export default {
     return {
       form: {
         email: "rflaraujodev@gmail.com",
+        cpf: "",
       },
+      loadingForgotPassword: false,
     };
-  },
-  methods: {
-    async onLogin() {
-      this.logIn();
-    },
   },
 };
 </script>

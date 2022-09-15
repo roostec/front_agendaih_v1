@@ -3,7 +3,7 @@
     <q-form @submit="onLogin">
       <q-card flat bordered style="width: 448px" class="q-pa-md">
         <q-card-section>
-          <div class="text-h5 text-center">Login</div>
+          <div class="text-h5 text-center">{{ appTitle }}</div>
         </q-card-section>
         <q-card-section class="q-gutter-sm">
           <q-input

@@ -6,3 +6,20 @@
 * {
   font-family: "Poppins", sans-serif;
 }
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+// .bg-auth {
+//   background: rgb(79, 70, 229);
+//   background: linear-gradient(
+//     312deg,
+//     rgba(79, 70, 229, 0.06766456582633051) 0%,
+//     rgba(79, 70, 229, 1) 100%
+//   );
+// }

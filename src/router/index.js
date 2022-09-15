@@ -15,15 +15,23 @@ const routes = [
       },
       {
         path: "signin",
-        name: "signin",
+        name: "SignIn",
         component: () =>
           import(/* webpackChunkName: "auth" */ "@/pages/SignInPage.vue"),
       },
       {
         path: "signup",
-        name: "signup",
+        name: "SignUp",
         component: () =>
           import(/* webpackChunkName: "auth" */ "@/pages/SignUpPage.vue"),
+      },
+      {
+        path: "forgoutpassword",
+        name: "ForgotPassword",
+        component: () =>
+          import(
+            /* webpackChunkName: "auth" */ "@/pages/ForgotPasswordPage.vue"
+          ),
       },
     ],
   },
@@ -34,7 +42,7 @@ const routes = [
     children: [
       {
         path: "main",
-        name: "main",
+        name: "Main",
         component: () =>
           import(/* webpackChunkName: "main" */ "@/pages/MainPage.vue"),
       },
